@@ -25,27 +25,30 @@ module.exports = (robot) ->
       msg.send "Nope... not friday yet. "
       return
 
+    msg.send "YES IT IS FRIDAY!!!"
+
     msg.http('http://www.reddit.com/r/holdmybeer.json')
       .get() (err, res, body) ->
         result = JSON.parse(body)
 
-        urls = [ ]
+        items = [ ]
         for child in result.data.children
           if child.data.domain != "self.holdmybeer"
-            urls.push(child.data.url)
+            items.push({ url: child.data.url, title: child.data.title.replace('HMB', 'Hold my beer').replace('beer', ':beer:') })
 
-        if urls.count <= 0
-          msg.send "Couldn't find anything cute..."
+        if items.count <= 0
+          msg.send "Couldn't find anything awesome..."
           return
 
-        rnd = Math.floor(Math.random()*urls.length)
-        picked_url = urls[rnd]
+        rnd = Math.floor(Math.random()*items.length)
+        picked_item = items[rnd]
 
-        parsed_url = url.parse(picked_url)
+        parsed_url = url.parse(picked_item.url)
         if parsed_url.host == "imgur.com"
           parsed_url.host = "i.imgur.com"
           parsed_url.pathname = parsed_url.pathname + ".jpg"
 
-          picked_url = url.format(parsed_url)
+          picked_item.url = url.format(parsed_url)
 
-        msg.send picked_url
+        msg.send picked_item.title
+        msg.send picked_item.url
