@@ -1,1 +1,1 @@
-web: bin/hubot -a slack -n anarchybot
+web: bin/hubot -a slack -n ab
