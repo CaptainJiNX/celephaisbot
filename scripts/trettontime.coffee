@@ -21,7 +21,10 @@ responses = [
   "Just so y'all know. It's 13:37.",
   "LOL, 13:37!",
   "One, two, Freddy's coming for you. Three, four, better lock your door. One, three, three, seven, it goes up to ELEVEN!",
-  "Tick, tock, tick, tock... Time is 13:37. Tick, tock, tickety-tock..."
+  "Tick, tock, tick, tock... Time is 13:37. Tick, tock, tickety-tock...",
+  "goatbot beer me, cuz it's 13:37 already!",
+  "Ninja time again!",
+  "Time to wave the flag... 13:37 as usual"
   ]
 
 module.exports = (robot) ->
