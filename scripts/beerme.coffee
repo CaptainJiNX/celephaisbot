@@ -35,4 +35,8 @@ beers = [
 
 module.exports = (robot) ->
   robot.hear /.*(beer me).*/i, (msg) ->
-    msg.send msg.random beers
+    if msg.message.user.name == 'Shell'
+      msg.send "Beer is not good for goatbots, so here is something else for you!"
+      msg.send "http://www.usagodis.se/upload/prod/FANTAEXOTIC.jpg"
+    else
+      msg.send msg.random beers
