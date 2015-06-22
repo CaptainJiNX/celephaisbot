@@ -35,7 +35,7 @@ beers = [
 
 module.exports = (robot) ->
   robot.hear /.*(beer me).*/i, (msg) ->
-    if msg.message.user.name == 'Shell'
+    if msg.message.user.name == 'goatbot'
       msg.send "Beer is not good for goatbots, so here is something else for you!"
       msg.send "http://www.usagodis.se/upload/prod/FANTAEXOTIC.jpg"
     else
