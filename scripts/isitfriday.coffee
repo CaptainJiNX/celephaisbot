@@ -15,14 +15,28 @@
 
 url = require("url")
 
+dayName = (day) ->
+  return "monday" if day == 1
+  return "tuesday" if day == 2
+  return "wednesday" if day == 3
+  return "thursday" if day == 4
+  return "friday" if day == 5
+  return "saturday" if day == 6
+  return "sunday" if day == 0
+
 module.exports = (robot) ->
   robot.respond /is it friday/i, (msg) ->
-    search = escape(msg.match[1])
+
+    if msg.message.user.name == 'goatbot'
+      msg.send "My dear goatbot... for you it's an eternal monday."
+      return;
 
     today = new Date()
+    day = today.getDay()
 
     if today.getDay() != 5
-      msg.send "Nope... not friday yet. "
+      msg.send "Nope, but you are still allowed to drink beer on a " + dayName(day) + "!"
+      msg.send "goatbot beer me"
       return
 
     msg.send "YES IT IS FRIDAY!!!"
