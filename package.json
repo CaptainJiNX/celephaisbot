@@ -21,6 +21,7 @@
     "hubot-shipit": "^0.1.1",
     "hubot-slack": "^3.2.1",
     "hubot-spotify-search": "^1.0.0",
+    "hubot-xkcd": "0.0.3",
     "hubot-youtube": "^0.1.2",
     "sandbox": "^0.8.6"
   },
