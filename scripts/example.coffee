@@ -9,6 +9,14 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
+  blahonga = [
+    "Pfft... like I would even notice.",
+    "OUCH! Nah... didn't hurt!",
+    "Hubot slaps the trout around a bit with a large goat"
+  ]
+
+  robot.hear /slaps hubot/i, (msg) ->
+    msg.send msg.random blahonga
 
   # robot.hear /badger/i, (msg) ->
   #   msg.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
