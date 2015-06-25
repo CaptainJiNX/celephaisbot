@@ -8,7 +8,7 @@
 #   None
 #
 # Commands:
-#   hubot demo me
+#   hubot demo me - Displays a random demoscene production.
 #
 # Author:
 #   captain jinx
