@@ -10,9 +10,9 @@
 
 module.exports = (robot) ->
   blahonga = [
-    "Pfft... like I would even notice.",
-    "OUCH! Nah... didn't hurt!",
-    "Hubot slaps the trout around a bit with a large goat"
+    "`Pfft... like I would even notice.`",
+    "`OUCH! Nah... didn't hurt!` :trollface:",
+    "`hubot slaps the trout around a bit with a large goat`"
   ]
 
   robot.hear /slaps hubot/i, (msg) ->
