@@ -1,11 +1,10 @@
-FROM node:4.2.4-slim
-ENV EXTERNAL_PORT 80
-EXPOSE $EXTERNAL_PORT
-ENV NODE_VERSION 4.2.4
-RUN mkdir -p /app
-WORKDIR /app
-
-ONBUILD COPY package.json /app
-ONBUILD RUN npm install -q --production
-ONBUILD COPY . /app
-ENTRYPOINT ["node", "."]
+FROM ctjinx/node-4.2.4
+ENV REDISTOGO_URL="redis:celephaisbot-redis:6379"
+ENV HUBOT_MEMEGEN_USERNAME="---"
+ENV HUBOT_MEMEGEN_PASSWORD="---"
+ENV HUBOT_EXTRA_MEMES="true"
+ENV HUBOT_GOOGLE_CSE_KEY="---"
+ENV HUBOT_GOOGLE_CSE_ID="---"
+ENV TZ="Europe/Stockholm"
+ENV HUBOT_SLACK_TOKEN="---"
+CMD ["./bin/hubot", "-a", "slack"]
