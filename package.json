@@ -6,7 +6,7 @@
   "description": "Mostly harmless...",
   "dependencies": {
     "cron": "^1.1.0",
-    "hubot": "^2.17.0",
+    "hubot": "^2.18.0",
     "hubot-codinglove": "^0.2.6",
     "hubot-google-images": "^0.2.6",
     "hubot-google-translate": "^0.2.0",
