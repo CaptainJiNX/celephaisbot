@@ -20,7 +20,7 @@ module.exports = (robot) ->
       msg.send "Din mamma kan vara ett pappaskämt."
       return;
 
-    msg.http('http://www.reddit.com/r/pappaskamt.json').get() (err, res, body) ->
+    msg.http('https://www.reddit.com/r/pappaskamt.json').get() (err, res, body) ->
       item = msg.random JSON.parse(body).data.children
 
       if !item
