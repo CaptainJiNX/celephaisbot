@@ -1,6 +1,7 @@
 FROM node:8.8.1-alpine
+RUN apk add -U tzdata
+RUN cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 
-RUN mkdir -p /app
 WORKDIR /app
 
 COPY package.json package-lock.json ./
@@ -17,6 +18,5 @@ ENV HUBOT_MEMEGEN_PASSWORD="---"
 ENV HUBOT_EXTRA_MEMES="true"
 ENV HUBOT_GOOGLE_CSE_KEY="---"
 ENV HUBOT_GOOGLE_CSE_ID="---"
-ENV TZ="Europe/Stockholm"
 ENV HUBOT_SLACK_TOKEN="---"
 CMD ["./bin/hubot", "-a", "slack"]
