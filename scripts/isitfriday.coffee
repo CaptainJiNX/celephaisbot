@@ -41,7 +41,7 @@ module.exports = (robot) ->
 
     msg.send "YES IT IS FRIDAY!!!"
 
-    msg.http('http://www.reddit.com/r/holdmybeer.json')
+    msg.http('https://www.reddit.com/r/holdmybeer.json')
       .get() (err, res, body) ->
         result = JSON.parse(body)
 
