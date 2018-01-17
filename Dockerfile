@@ -1,4 +1,4 @@
-FROM node:8.8.1-alpine
+FROM node:9.4.0-alpine
 RUN apk add -U tzdata
 RUN cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 
@@ -15,7 +15,7 @@ WORKDIR /app
 COPY package.json package-lock.json ./
 RUN npm install -q --production
 
-COPY external-scripts.json hubot-scripts.json ./
+COPY external-scripts.json ./
 COPY bin ./bin
 COPY lib ./lib
 COPY scripts ./scripts
