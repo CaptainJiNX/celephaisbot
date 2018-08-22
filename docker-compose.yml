@@ -1,0 +1,22 @@
+version: "3"
+
+services:
+  celephaisbot:
+    image: ctjinx/celephaisbot:latest
+    environment:
+      - REDISTOGO_URL=redis:celephaisbot-redis:6379
+    env_file: .env
+    networks:
+      - celephaisnet
+    depends_on:
+      - celephaisbot-redis
+
+  celephaisbot-redis:
+    image: redis:latest
+    networks:
+      - celephaisnet
+    volumes:
+      - "./data/:/data/"
+
+networks:
+  celephaisnet:
