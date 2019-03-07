@@ -12,7 +12,7 @@ services:
       - celephaisbot-redis
 
   celephaisbot-redis:
-    image: redis:latest
+    image: redis:5.0.3-alpine
     networks:
       - celephaisnet
     volumes:

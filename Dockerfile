@@ -1,11 +1,11 @@
-FROM node:10.9.0-alpine
+FROM node:10.15.2-alpine
 RUN apk add -U tzdata
 RUN cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 
 WORKDIR /app
 
 COPY package.json package-lock.json ./
-RUN npm install -q --production
+RUN npm ci
 
 COPY external-scripts.json ./
 COPY bin ./bin
