@@ -6,9 +6,6 @@
   "hubot-redis-brain",
   "hubot-rules",
   "hubot-shipit",
-  "hubot-youtube",
-  "hubot-spotify-search",
-  "hubot-codinglove",
   "hubot-mimic",
   "hubot-xkcd"
 ]
