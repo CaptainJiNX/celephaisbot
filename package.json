@@ -5,7 +5,7 @@
   "author": "ctjinx@gmail.com",
   "description": "Mostly harmless...",
   "dependencies": {
-    "cron": "^1.7.1",
+    "cron": "^1.7.2",
     "hubot": "^3.3.2",
     "hubot-codinglove": "^0.2.6",
     "hubot-google-images": "^0.2.7",
