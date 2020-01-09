@@ -41,14 +41,26 @@ module.exports = (robot) ->
 
     msg.send "YES IT IS FRIDAY!!!"
 
-    msg.http('https://www.reddit.com/r/holdmybeer.json')
+    if(Math.random() < 0.5)
+      subreddit = "holdmybeer"
+    else
+      subreddit = "holdmycosmo"
+
+    msg.http('https://www.reddit.com/r/' + subreddit + '.json')
       .get() (err, res, body) ->
         result = JSON.parse(body)
 
         items = [ ]
         for child in result.data.children
-          if child.data.domain != "self.holdmybeer"
-            items.push({ url: child.data.url, title: child.data.title.replace('HMB', 'Hold my beer').replace('beer', ':beer:') })
+          if child.data.domain != "self.holdmybeer" && child.data.domain != "self.holdmycosmo"
+            items.push({
+              url: child.data.url,
+              title: child.data.title
+                .replace('HMB', 'Hold my beer')
+                .replace('beer', ':beer:')
+                .replace('HMC', 'Hold my cosmo')
+                .replace('cosmo', ':cocktail:')
+            })
 
         if items.count <= 0
           msg.send "Couldn't find anything awesome..."
