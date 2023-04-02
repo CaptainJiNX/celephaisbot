@@ -5,6 +5,7 @@
   "author": "ctjinx@gmail.com",
   "description": "Mostly harmless...",
   "dependencies": {
+    "@slack/client": "^5.0.2",
     "cron": "^2.3.0",
     "hubot": "^3.3.2",
     "hubot-google-images": "^0.2.7",
