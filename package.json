@@ -5,17 +5,17 @@
   "author": "ctjinx@gmail.com",
   "description": "Mostly harmless...",
   "dependencies": {
-    "cron": "^1.8.2",
+    "cron": "^2.3.0",
     "hubot": "^3.3.2",
     "hubot-google-images": "^0.2.7",
     "hubot-help": "^1.0.1",
-    "hubot-maps": "0.0.3",
+    "hubot-maps": "^0.0.3",
     "hubot-mimic": "^0.1.2",
-    "hubot-redis-brain": "1.0.0",
+    "hubot-redis-brain": "^1.0.0",
     "hubot-rules": "^1.0.0",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.1",
-    "hubot-slack": "^4.9.0",
+    "hubot-slack": "^4.10.0",
     "hubot-xkcd": "0.0.5"
   }
 }

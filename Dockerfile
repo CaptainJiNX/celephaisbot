@@ -1,4 +1,4 @@
-FROM node:16.13.0-alpine
+FROM node:19.8.1-alpine
 RUN apk add -U tzdata
 RUN cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
 
