@@ -1,6 +1,4 @@
-FROM node:18.15.0-alpine
-RUN apk add -U tzdata
-RUN cp /usr/share/zoneinfo/Europe/Stockholm /etc/localtime
+FROM node:19.8.1-slim
 
 WORKDIR /app
 
@@ -11,5 +9,7 @@ COPY external-scripts.json ./
 COPY bin ./bin
 COPY lib ./lib
 COPY scripts ./scripts
+
+ENV TZ="Europe/Stockholm"
 
 CMD ["./bin/hubot", "-a", "slack"]
