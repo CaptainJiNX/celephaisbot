@@ -47,6 +47,8 @@ module.exports = (robot) ->
       subreddit = "holdmycosmo"
 
     msg.http('https://www.reddit.com/r/' + subreddit + '.json')
+      .header('accept', 'application/json')
+      .header('cookie', 'reddit_session: true;')
       .get() (err, res, body) ->
         result = JSON.parse(body)
 

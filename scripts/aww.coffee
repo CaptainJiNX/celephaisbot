@@ -19,6 +19,8 @@ module.exports = (robot) ->
   robot.respond /aww/i, (msg) ->
     search = escape(msg.match[1])
     msg.http('http://www.reddit.com/r/aww.json')
+      .header('accept', 'application/json')
+      .header('cookie', 'reddit_session: true;')
       .get() (err, res, body) ->
         result = JSON.parse(body)
 

@@ -20,18 +20,21 @@ module.exports = (robot) ->
       msg.send "Din mamma kan vara ett pappaskämt."
       return;
 
-    msg.http('https://www.reddit.com/r/pappaskamt.json').get() (err, res, body) ->
-      item = msg.random JSON.parse(body).data.children
+    msg.http('https://www.reddit.com/r/pappaskamt.json')
+      .header('accept', 'application/json')
+      .header('cookie', 'reddit_session: true;')
+      .get() (err, res, body) ->
+        item = msg.random JSON.parse(body).data.children
 
-      if !item
-        msg.send "Finns inga pappaskämt just nu..."
-        return
+        if !item
+          msg.send "Finns inga pappaskämt just nu..."
+          return
 
-      msg.send item.data.title
-      delay = (txt, t) ->
-        setTimeout () ->
-          msg.send txt
-        , t * 1000
+        msg.send item.data.title
+        delay = (txt, t) ->
+          setTimeout () ->
+            msg.send txt
+          , t * 1000
 
-      delay ".", t for t in [1,2,3,4]
-      delay item.data.selftext, 5
+        delay ".", t for t in [1,2,3,4]
+        delay item.data.selftext, 5
