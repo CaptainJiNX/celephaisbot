@@ -24,17 +24,11 @@ module.exports = (robot) ->
       .header('accept', 'application/json')
       .header('cookie', 'reddit_session=true;')
       .get() (err, res, body) ->
-        item = msg.random JSON.parse(body).data.children
+        item = msg.random JSON.parse(body).data.children.filter (item) ->
+          item.data.url != undefined
 
         if !item
           msg.send "Finns inga pappaskämt just nu..."
           return
 
-        msg.send item.data.title
-        delay = (txt, t) ->
-          setTimeout () ->
-            msg.send txt
-          , t * 1000
-
-        delay ".", t for t in [1,2,3,4]
-        delay item.data.selftext, 5
+        msg.send item.data.url
