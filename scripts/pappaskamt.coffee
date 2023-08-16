@@ -22,7 +22,7 @@ module.exports = (robot) ->
 
     msg.http('https://www.reddit.com/r/pappaskamt.json')
       .header('accept', 'application/json')
-      .header('cookie', 'reddit_session: true;')
+      .header('cookie', 'reddit_session=true;')
       .get() (err, res, body) ->
         item = msg.random JSON.parse(body).data.children
 
