@@ -1,10 +1,6 @@
-const { WebClient } = require("@slack/client");
-
 const messageHistory = [];
 
 module.exports = (robot) => {
-  web = new WebClient(robot.adapter.options.token);
-
   robot.respond(/gpt\s*(.+)/i, (msg) => {
     const prompt = msg.match[1];
     messageHistory.push({ role: "user", content: prompt });
