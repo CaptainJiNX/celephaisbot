@@ -1,7 +1,8 @@
 const { WebClient } = require("@slack/client");
 
 module.exports = (robot) => {
-  web = new WebClient(robot.adapter.options.token);
+  const token = robot?.adapter?.options?.token;
+  const web = token ? new WebClient(token) : undefined;
 
   robot.respond(/generate\s*(.+)/i, (msg) => {
     const prompt = msg.match[1];
@@ -27,10 +28,15 @@ module.exports = (robot) => {
 
       if (!base64Data) {
         msg.send("Sorry, I am going to have to ask you to give back my 🍺...");
-        return msg.send(json.error.message || "Could not comply.")
+        return msg.send(json.error.message || "Could not comply.");
       }
 
       const image = Buffer.from(base64Data, "base64");
+
+      if (!web) {
+        require("fs").writeFileSync(`${prompt.slice(0, 40)}.png`, image);
+        return;
+      }
 
       web.files
         .upload({
