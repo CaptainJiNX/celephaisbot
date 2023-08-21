@@ -32,3 +32,6 @@ module.exports = (robot) ->
           return
 
         msg.send item.data.url
+
+        if item.data.title != "Dagens"
+          msg.send item.data.title
