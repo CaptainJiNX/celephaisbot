@@ -13,9 +13,11 @@ module.exports = (robot) => {
       .header("Authorization", `Bearer ${process.env.OPENAI_API_KEY}`)
       .post(
         JSON.stringify({
+          model: "dall-e-3",
           prompt,
           n: 1,
-          size: "512x512",
+          size: "1024x1024",
+          quality: "hd",
           response_format: "b64_json",
         })
       )((err, res, body) => {
