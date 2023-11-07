@@ -11,7 +11,7 @@ module.exports = (robot) => {
       .header("Authorization", `Bearer ${process.env.OPENAI_API_KEY}`)
       .post(
         JSON.stringify({
-          model: "gpt-4",
+          model: "gpt-4-1106-preview",
           messages: [
             {
               role: "system",
@@ -21,7 +21,7 @@ module.exports = (robot) => {
             ...messageHistory,
           ],
           temperature: 1,
-          max_tokens: 256,
+          // max_tokens: 4096,
           top_p: 1,
           frequency_penalty: 0,
           presence_penalty: 0,
@@ -34,8 +34,7 @@ module.exports = (robot) => {
       const json = JSON.parse(body);
       const tokensUsed = json.usage?.total_tokens;
 
-      if (tokensUsed > 4096 || messageHistory.length > 10) {
-        messageHistory.shift();
+      if (tokensUsed > 16384 || messageHistory.length > 10) {
         messageHistory.shift();
       }
 
