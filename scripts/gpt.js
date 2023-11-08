@@ -31,7 +31,14 @@ module.exports = (robot) => {
         return msg.send(err.message || err);
       }
 
-      const json = JSON.parse(body);
+      let json;
+      try {
+        json = JSON.parse(body);
+      } catch (error) {
+        msg.send("Expected JSON but got this instead???👇");
+        return msg.send(body);
+      }
+
       const tokensUsed = json.usage?.total_tokens;
 
       if (tokensUsed > 16384 || messageHistory.length > 10) {

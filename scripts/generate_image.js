@@ -21,15 +21,27 @@ module.exports = (robot) => {
           response_format: "b64_json",
         })
       )((err, res, body) => {
+      const sorry =
+        "Sorry, I am going to have to ask you to give back my 🍺...";
+
       if (err) {
+        msg.send(sorry);
         return msg.send(err.message || err);
       }
 
-      const json = JSON.parse(body);
+      let json;
+      try {
+        json = JSON.parse(body);
+      } catch (error) {
+        msg.send(sorry);
+        msg.send("Expected JSON but got this instead???👇");
+        return msg.send(body);
+      }
+
       const base64Data = json.data?.[0]?.b64_json;
 
       if (!base64Data) {
-        msg.send("Sorry, I am going to have to ask you to give back my 🍺...");
+        msg.send(sorry);
         return msg.send(json.error.message || "Could not comply.");
       }
 
