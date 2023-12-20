@@ -17,7 +17,6 @@ module.exports = (robot) => {
           prompt,
           n: 1,
           size: "1024x1024",
-          quality: "hd",
           response_format: "b64_json",
         })
       )((err, res, body) => {
